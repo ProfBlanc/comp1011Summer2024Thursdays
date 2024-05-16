@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="ca.georgiancollege.comp1011summer2024thursdays.CameraController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Label layoutX="56.0" layoutY="28.0" text="Camera Time">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="error" layoutX="7.0" layoutY="88.0" prefHeight="22.0" prefWidth="287.0" text="Hey! Follow the instructions man!" textFill="RED">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="132.0" text="Name" />
+            <TextField fx:id="name" layoutX="92.0" layoutY="128.0" />
+            <Label layoutX="27.0" layoutY="165.0" text="Make" />
+            <TextField fx:id="make" layoutX="91.0" layoutY="161.0" />
+            <Label layoutX="28.0" layoutY="203.0" text="Model" />
+            <TextField fx:id="model" layoutX="92.0" layoutY="199.0" />
+            <Label layoutX="28.0" layoutY="245.0" text="Color" />
+            <TextField fx:id="color" layoutX="92.0" layoutY="241.0" />
+            <Button layoutX="125.0" layoutY="293.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Label layoutX="35.0" layoutY="119.0" text="Output">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="output" alignment="TOP_LEFT" layoutX="35.0" layoutY="156.0" prefHeight="158.0" prefWidth="239.0" style="-fx-border-color: black;" text="Output">
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
