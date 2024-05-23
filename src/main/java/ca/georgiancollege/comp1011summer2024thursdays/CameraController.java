@@ -2,15 +2,20 @@ package ca.georgiancollege.comp1011summer2024thursdays;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class CameraController {
 
+    @FXML
+    private ImageView photo;
     @FXML
     private ComboBox<String> comboBox;
     @FXML
@@ -21,6 +26,11 @@ public class CameraController {
 
     private ArrayList<Camera> cameraList = new ArrayList<>();
     private int indexTracker = -1;
+
+    private ArrayList<String> imagesPathString = new ArrayList<>();
+    private ArrayList<Image> imagesPathImage = new ArrayList<>();
+
+    private int imagesPathSelectedIndex = 2;
 
     @FXML
     void clear(){
@@ -77,6 +87,10 @@ public class CameraController {
         output.setText("");
 
         //comboBox.getItems().add("Hi");
+
+        imagesPathString.add( getClass().getResource("images/camera1.jpg").toString()  );
+        imagesPathString.add( getClass().getResource("images/camera2.png").toString()  );
+        imagesPathString.add( getClass().getResource("images/camera3.jpg").toString()  );
      }
 
      @FXML
@@ -85,6 +99,53 @@ public class CameraController {
         int index = comboBox.getSelectionModel().getSelectedIndex();
 
         output.setText( cameraList.get(index).toString() );
+     }
+
+     @FXML
+    void onArrowClick(ActionEvent e){
+        Button btn = (Button)e.getSource();
+         String direction = btn.getText();
+
+
+         imagesPathSelectedIndex = direction.equals("<") ?
+                 imagesPathSelectedIndex > 0 ? --imagesPathSelectedIndex : 2
+                 : imagesPathSelectedIndex < 2 ? ++imagesPathSelectedIndex : 0;
+
+                 photo.setImage(
+                         new Image(imagesPathString.get(imagesPathSelectedIndex))
+                 );
+
+//         if(direction.equals("<")){
+//             if(imagesPathSelectedIndex > 0){
+//                 photo.setImage(
+//                         new Image(imagesPathString.get(--imagesPathSelectedIndex))
+//                 );
+//             }
+//             else{
+//                 imagesPathSelectedIndex = 2;
+//                 photo.setImage(
+//                         new Image(imagesPathString.get(imagesPathSelectedIndex))
+//                 );
+//             }
+//         }
+//         else if (direction.equals(">")) {
+//             if(imagesPathSelectedIndex < 2){
+//                 photo.setImage(
+//                         new Image(imagesPathString.get(++imagesPathSelectedIndex))
+//                 );
+//             }
+//             else{
+//                 imagesPathSelectedIndex = 0;
+//                 photo.setImage(
+//                         new Image(imagesPathString.get(imagesPathSelectedIndex))
+//                 );
+//             }
+
+//         }
+//         photo.setImage(
+//     new Image(getClass().getResource("images/camera2.png").toString())
+//         );
+
      }
 
 }

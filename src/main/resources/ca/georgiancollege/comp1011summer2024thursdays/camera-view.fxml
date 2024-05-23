@@ -4,12 +4,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024thursdays.CameraController">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024thursdays.CameraController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -23,15 +26,25 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="28.0" layoutY="132.0" text="Name" />
-            <TextField fx:id="name" layoutX="92.0" layoutY="128.0" />
-            <Label layoutX="27.0" layoutY="165.0" text="Make" />
-            <TextField fx:id="make" layoutX="91.0" layoutY="161.0" />
-            <Label layoutX="28.0" layoutY="203.0" text="Model" />
-            <TextField fx:id="model" layoutX="92.0" layoutY="199.0" />
-            <Label layoutX="28.0" layoutY="245.0" text="Color" />
-            <TextField fx:id="color" layoutX="92.0" layoutY="241.0" />
-            <Button layoutX="125.0" layoutY="293.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+            <Label layoutX="27.0" layoutY="307.0" text="Name" />
+            <TextField fx:id="name" layoutX="91.0" layoutY="303.0" />
+            <Label layoutX="26.0" layoutY="340.0" text="Make" />
+            <TextField fx:id="make" layoutX="90.0" layoutY="336.0" />
+            <Label layoutX="27.0" layoutY="378.0" text="Model" />
+            <TextField fx:id="model" layoutX="91.0" layoutY="374.0" />
+            <Label layoutX="27.0" layoutY="420.0" text="Color" />
+            <TextField fx:id="color" layoutX="91.0" layoutY="416.0" />
+            <Button layoutX="124.0" layoutY="515.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+            <ImageView fx:id="photo" fitHeight="122.0" fitWidth="185.0" layoutX="85.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/camera3.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="28.0" layoutY="172.0" text="Photo" />
+            <Button layoutX="124.0" layoutY="255.0" mnemonicParsing="false" onAction="#onArrowClick" text="&lt;" />
+            <Button layoutX="218.0" layoutY="255.0" mnemonicParsing="false" onAction="#onArrowClick" text="&gt;" />
+            <Slider layoutX="90.0" layoutY="471.0" />
+            <Label layoutX="17.0" layoutY="469.0" text="# Photos" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
