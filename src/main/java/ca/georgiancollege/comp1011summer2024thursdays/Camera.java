@@ -19,7 +19,7 @@ p:recordVideo(howLong: double): boolean
 
 
      */
-    public String color;
+    public String color, name;
     private String make, model;
     public enum PowerStates{ON, OFF}
     public enum ShutterTypes{OPEN, CLOSED}
@@ -43,4 +43,48 @@ p:recordVideo(howLong: double): boolean
     }
 
     public Camera(){}
+
+    //alt+insert
+
+    private void validate(String title, String content){
+        if(content.trim().isEmpty())
+            throw new IllegalArgumentException(title + " is invalid. Should be at least 1 char");
+    }
+    public void setColor(String color) {
+        validate("Color", color);
+        this.color = color;
+    }
+
+    public void setName(String name) {
+        validate("Name", name);
+        this.name = name;
+    }
+
+    public void setMake(String make) {
+        validate("Make", make);
+        this.make = make;
+    }
+
+    public void setModel(String model) {
+        validate("Model", model);
+        this.model = model;
+    }
+
+    public Camera(String name, String make, String model, String color){
+        setName(name);
+        setMake(make);
+        setModel(model);
+        setColor(color);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Camera{" +
+                "color='" + color + '\'' +
+                ", name='" + name + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }
