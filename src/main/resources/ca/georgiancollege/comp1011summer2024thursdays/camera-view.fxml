@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024thursdays.CameraController">
+<SplitPane stylesheets="@app.css" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024thursdays.CameraController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -43,7 +43,7 @@
             <Label layoutX="28.0" layoutY="172.0" text="Photo" />
             <Button layoutX="124.0" layoutY="255.0" mnemonicParsing="false" onAction="#onArrowClick" text="&lt;" />
             <Button layoutX="218.0" layoutY="255.0" mnemonicParsing="false" onAction="#onArrowClick" text="&gt;" />
-            <Slider fx:id="numPhotos" layoutX="90.0" layoutY="471.0" />
+            <Slider fx:id="numPhotos" layoutX="90.0" layoutY="471.0" showTickLabels="true" showTickMarks="true" />
             <Label layoutX="17.0" layoutY="469.0" text="# Photos" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -58,13 +58,15 @@
                   <Insets left="10.0" top="10.0" />
                </padding>
             </Label>
-            <Label layoutX="55.0" layoutY="490.0" text="Choose a Camera object to Display" />
-            <ComboBox fx:id="comboBox" layoutX="73.0" layoutY="526.0" onAction="#onChange" prefWidth="150.0" />
+            <Label layoutX="55.0" layoutY="515.0" text="Choose a Camera object to Display" />
+            <ComboBox fx:id="comboBox" layoutX="73.0" layoutY="551.0" onAction="#onChange" prefWidth="150.0" />
             <ImageView fx:id="photoRight" fitHeight="150.0" fitWidth="200.0" layoutX="55.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/camera0.png" />
                </image>
             </ImageView>
+            <Button fx:id="btnDelete" layoutX="190.0" layoutY="455.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Button" />
+            <Button fx:id="btnEdit" layoutX="55.0" layoutY="455.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0"  text="Button" />
          </children></AnchorPane>
   </items>
 </SplitPane>

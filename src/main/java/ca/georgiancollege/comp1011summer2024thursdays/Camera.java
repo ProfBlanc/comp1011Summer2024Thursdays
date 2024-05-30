@@ -93,6 +93,22 @@ p:recordVideo(howLong: double): boolean
             this.imagePath = imagePath;
     }
 
+    public String getMake() {
+        return make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getNumberOfPhotos() {
+        return numberOfPhotos;
+    }
+
+    public void setNumberOfPhotos(int numberOfPhotos) {
+        this.numberOfPhotos = numberOfPhotos;
+    }
+
     @Override
     public String toString() {
         return "Camera{" +
@@ -100,6 +116,7 @@ p:recordVideo(howLong: double): boolean
                 ", name='" + name + '\'' +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
+                ", numberOfPhotos=" + numberOfPhotos +
                 '}';
     }
 }
