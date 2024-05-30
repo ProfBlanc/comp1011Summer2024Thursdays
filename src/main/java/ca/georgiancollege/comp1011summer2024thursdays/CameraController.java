@@ -2,10 +2,7 @@ package ca.georgiancollege.comp1011summer2024thursdays;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -15,7 +12,9 @@ import java.util.Random;
 public class CameraController {
 
     @FXML
-    private ImageView photo;
+    private Slider numPhotos;
+    @FXML
+    private ImageView photo, photoRight;
     @FXML
     private ComboBox<String> comboBox;
     @FXML
@@ -63,10 +62,16 @@ public class CameraController {
 //            cameraList.add(camera);
 
                     //output.setText(camera.name + " - "  + camera.color);
-                    cameraList.add(new Camera(name.getText(), make.getText(), model.getText(), color.getText()));
-                    indexTracker++;
+//                    cameraList.add(new Camera(name.getText(), make.getText(), model.getText(), color.getText()));
+cameraList.add(new Camera(name.getText(), make.getText(), model.getText(), color.getText(),
+        imagesPathString.get(imagesPathSelectedIndex), (int)numPhotos.getValue() ));
+            indexTracker++;
+
                     output.setText(cameraList.get(indexTracker).toString());
 
+            photoRight.setImage(
+                    new Image(imagesPathString.get(imagesPathSelectedIndex))
+            );
                     clear();
 
                     comboBox.getItems().add(cameraList.get(indexTracker).name
@@ -99,6 +104,10 @@ public class CameraController {
         int index = comboBox.getSelectionModel().getSelectedIndex();
 
         output.setText( cameraList.get(index).toString() );
+
+        photoRight.setImage(
+                new Image(cameraList.get(index).getImagePath())
+        );
      }
 
      @FXML

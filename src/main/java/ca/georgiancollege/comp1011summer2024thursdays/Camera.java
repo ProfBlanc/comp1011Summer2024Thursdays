@@ -20,7 +20,8 @@ p:recordVideo(howLong: double): boolean
 
      */
     public String color, name;
-    private String make, model;
+    private String make, model, imagePath;
+
     public enum PowerStates{ON, OFF}
     public enum ShutterTypes{OPEN, CLOSED}
     private PowerStates powerState = PowerStates.OFF;
@@ -77,6 +78,20 @@ p:recordVideo(howLong: double): boolean
         setColor(color);
 
     }
+    public Camera(String name, String make, String model, String color, String imagePath, int numberOfPhotos){
+        this(name, make, model, color);
+        setImagePath(imagePath);
+        this.numberOfPhotos = numberOfPhotos;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        if(imagePath.contains(".png") || imagePath.contains(".jpg"))
+            this.imagePath = imagePath;
+    }
 
     @Override
     public String toString() {
@@ -88,3 +103,5 @@ p:recordVideo(howLong: double): boolean
                 '}';
     }
 }
+
+
