@@ -91,10 +91,34 @@ priorityQueue.add(-50);
 //Set
 TreeSet<Integer> treeSet = new TreeSet<>();
 HashSet<Integer> hashSet = new HashSet<>();
+
+treeSet.add(100);
+treeSet.add(-100);
+        treeSet.add(50);
+        treeSet.add(50);
+        treeSet.add(-50);
+        System.out.println("*".repeat(20));
+for(int vv : treeSet){
+    System.out.println(vv);
+}
+
+Set<Integer> lessThan100 = treeSet.headSet(100, true);
+Set<Integer> greaterThanZero = treeSet.tailSet(0);
 treeSet.iterator();
 hashSet.iterator();
 //Map
 TreeMap<String, Double> treeMap = new TreeMap<>();
+
+treeMap.put("1st", 123.456);
+treeMap.put("2nd", 987.654);
+
+double v2 = treeMap.get("1st");
+System.out.println("*".repeat(20));
+Set<String> theKeys = treeMap.keySet();
+for(String key : theKeys){
+    System.out.println(key);
+    System.out.println(treeMap.get(key));
+}
 HashMap<String, Double> hashMap = new HashMap<>();
 
     }

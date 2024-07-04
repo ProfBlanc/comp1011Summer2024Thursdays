@@ -1,0 +1,14 @@
+Task 1
+Ask the user for 5 integer values
+Store the values in 2 of the 4 Collection
+interfaces
+Create an iterator and output each value
+
+Task 2
+Continually ask the user for a number
+until they input a number between 1 and 10
+store their incorrect guesses and output these incorrect guesses ounce user has correctly inputted a number between 1 and 10. Out the incorrect guesses in ascending order
+
+Task 3
+Store your favourite course per semester since attending Georgian College
+
