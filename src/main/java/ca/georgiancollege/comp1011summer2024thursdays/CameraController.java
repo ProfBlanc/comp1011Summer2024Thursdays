@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
 public class CameraController {
@@ -45,9 +46,7 @@ public class CameraController {
 
     private EventHandler<MouseEvent> onMouseMove = event-> System.out.println("You Moved Mouse");  //lambda expression
 
-    private boolean editMode = false;
-
-    private Camera cameraToEdit;
+    private int cameraToEditIndex = - 1;
 
     @FXML
     void clear(){
@@ -82,41 +81,36 @@ public class CameraController {
                     //output.setText(camera.name + " - "  + camera.color);
 //                    cameraList.add(new Camera(name.getText(), make.getText(), model.getText(), color.getText()));
 
-if(editMode){
+Camera camera = new Camera(name.getText(), make.getText(), model.getText(), color.getText(),
+        imagesPathString.get(imagesPathSelectedIndex), (int) numPhotos.getValue());
 
-    //update the value of the selected camara
-    cameraToEdit.setImagePath(imagesPathString.get(imagesPathSelectedIndex));
-    cameraToEdit.setColor(color.getText());
-    cameraToEdit.setModel(model.getText());
-    cameraToEdit.setName(name.getText());
-    cameraToEdit.setMake(make.getText());
-    cameraToEdit.setNumberOfPhotos((int)numPhotos.getValue());
-    cameraToEdit = null;
+if(cameraToEditIndex > -1){
+    cameraList.set(cameraToEditIndex, camera);
+
+    comboBox.getItems().set(cameraToEditIndex, camera.name
+            + " -" + camera.color);
+
 }
 else {
-    cameraList.add(new Camera(name.getText(), make.getText(), model.getText(), color.getText(),
-            imagesPathString.get(imagesPathSelectedIndex), (int) numPhotos.getValue()));
+    cameraList.add(camera);
     indexTracker++;
-
-    comboBox.getItems().add(cameraList.get(indexTracker).name
-            + " -" + cameraList.get(indexTracker).color);
-
+    comboBox.getItems().add(camera.name
+            + " -" + camera.color);
 }
 
-                    output.setText(cameraList.get(indexTracker).toString());
+            output.setText(camera.toString());
+            photoRight.setImage(
+                    new Image(camera.getImagePath())
+            );
 
                     numPhotos.setValue(0);
-
-            photoRight.setImage(
-                    new Image(imagesPathString.get(imagesPathSelectedIndex))
-            );
+                    imagesPathSelectedIndex = 0;
+                    photo.setImage(
+                            new Image(imagesPathString.getFirst())
+                    );
                     clear();
-
-
-
         }
         catch (Exception e){
-
             error.setText(e.getMessage());
         }
 
@@ -154,26 +148,50 @@ else {
                 }
         );
 
-
+    btnEdit.setGraphic(
+            new ImageView(
+                    new Image(String.valueOf(getClass().getResource("images/edit.png")))
+            )
+    );
     btnEdit.setOnAction(e->{
+        cameraToEditIndex = comboBox.getSelectionModel().getSelectedIndex();
+       if(cameraToEditIndex > -1){
 
-       int index = comboBox.getSelectionModel().getSelectedIndex();
-       if(index > 0){
-
-           cameraToEdit = cameraList.get(index);
-           make.setText(cameraToEdit.getMake());
-           model.setText(cameraToEdit.getModel());
-           color.setText(cameraToEdit.color);
-           name.setText(cameraToEdit.name);
-           numPhotos.setValue(cameraToEdit.getNumberOfPhotos());
+           make.setText(cameraList.get(cameraToEditIndex).getMake());
+           model.setText(cameraList.get(cameraToEditIndex).getModel());
+           color.setText(cameraList.get(cameraToEditIndex).color);
+           name.setText(cameraList.get(cameraToEditIndex).name);
+           numPhotos.setValue(cameraList.get(cameraToEditIndex).getNumberOfPhotos());
            photo.setImage(
-                   new Image(cameraToEdit.getImagePath())
+                   new Image(cameraList.get(cameraToEditIndex).getImagePath())
            );
 
-           editMode = true;
+           int cameraToEditImagePathIndex = 0;
+           String cameraToEditImagePathString = "";
+           for(int i = 0; i < imagesPathString.size(); i++){
+               if(imagesPathString.get(i).equals(cameraToEditImagePathString)){
+                   cameraToEditImagePathIndex = i;
+                   break;
+               }
+           }
+           imagesPathSelectedIndex = cameraToEditImagePathIndex;
+
        }
     });
 
+    btnDelete.setOnAction(e->{
+        int selectedIndex = comboBox.getSelectionModel().getSelectedIndex();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm");
+        alert.setContentText("Are you sure that you want to delete Camera with name " +
+                cameraList.get(selectedIndex).name + " ?" );
+        Optional<ButtonType> value = alert.showAndWait();
+        if(value.isPresent() && value.get().equals(ButtonType.OK)){
+            cameraList.remove(selectedIndex);
+            comboBox.getItems().remove(selectedIndex);
+            comboBox.getSelectionModel().selectFirst();
+        }
+    });
      }
 
      @FXML
