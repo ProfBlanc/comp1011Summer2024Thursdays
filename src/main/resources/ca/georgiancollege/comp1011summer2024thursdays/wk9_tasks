@@ -20,7 +20,7 @@ Task 5
 Create a LinkedList that will store a collection of Student objects
 
 Task 6
-Using a loop, instantiate a new Student object
+Using a loop, instantiate a new Student object and add it to the array list of Student objects
     name: choose a random name in task2 arraylist
     age: get a value of your int array in task 3
     grade: get a value of your double array in task 4
@@ -29,8 +29,11 @@ Task 7
     Output all student names with letter a and at least 4 character
 
 Task 8
+    Transform the array list of Student objects to a stream and
     Output all Mature Students (age 30+)
 Task 9
+    Transform the array list of Student objects to a stream and
     Output all HonorRoll students (grade: 80+)
 Task 10
+    Transform the array list of Student objects to a stream and
     Output all Teenage students that are failing
