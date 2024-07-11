@@ -2,6 +2,7 @@ package ca.georgiancollege.comp1011summer2024thursdays;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -103,8 +104,61 @@ public class Week9 {
 
     }
 
+    static void funTask(){
+
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Ben");
+        names.add("John");
+        names.add("Christopher");
+        names.add("Jennifer");
+        names.add("Mary");
+        names.add("Edward");
+        names.add("Heather");
+        names.add("Pauline");
+        names.add("Daniel");
+        names.add("James");
+
+        Random random = new Random();
+
+        int[] ages = random.ints(100, 18, 66).toArray();
+        double[] grades = random.doubles(100, 40, 96).toArray();
+
+        LinkedList<Student> students = new LinkedList<>();
+
+        for(int i = 0; i < 100; i++){
+            students.add(new Student(
+                    names.get(random.nextInt(names.size())),
+                    ages[i],
+                    grades[i]
+            ));
+        }
+
+        System.out.println("Output all student names with letter a and at least 4 character");
+        students.stream()
+                .map(s->s.getName().toLowerCase())
+                .filter(s->s.contains("a") && s.length() >= 4)
+                .forEach(System.out::println);
+        System.out.println("Output all Mature Students (age 30+)");
+        students.stream()
+                .filter(s-> s.getAge() >= 30)
+                .forEach(System.out::println);
+
+        System.out.println("Output all HonorRoll students");
+        students.stream()
+                .filter(s-> s.getGrade() >= 80)
+                .forEach(System.out::println);
+
+        System.out.println("Output all Teenage students that are failing");
+        students.stream()
+                .filter(s-> s.getGrade() < 50 && s.getAge()  < 20)
+                .forEach(System.out::println);
+
+
+    }
+
 
         public static void main(String[] args) {
-            example6();
+            //example6();
+            funTask();
     }
 }
