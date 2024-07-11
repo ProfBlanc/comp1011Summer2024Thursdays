@@ -3,7 +3,9 @@ package ca.georgiancollege.comp1011summer2024thursdays;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -149,16 +151,42 @@ public class Week9 {
                 .forEach(System.out::println);
 
         System.out.println("Output all Teenage students that are failing");
-        students.stream()
+        List<Student> saved = students.stream()
                 .filter(s-> s.getGrade() < 50 && s.getAge()  < 20)
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
+                //                .toList();
+//                .forEach(System.out::println);
 
 
     }
 
 
+    static void example7(){
+
+        System.out.println("Starting thread " + Thread.currentThread().getName());
+        Thread t1 = new Thread();//Thread-N, Thread-0
+        t1.start();
+
+        Thread t2 = new Thread("My thread");
+        Thread t3 = new Thread(); // Thread-1
+        t3.start();
+
+        Runnable task = () -> {
+            System.out.println("Hello from Thread " + Thread.currentThread().getName());
+            //Integer.parseInt("abc");
+            System.out.println("STATE = " + Thread.currentThread().getState());
+        };
+
+        Thread t4 = new Thread(task);
+        t4.start();
+
+        System.out.println("Ending thread " + Thread.currentThread().getName());
+
+        task.run();
+
+    }
         public static void main(String[] args) {
-            //example6();
-            funTask();
+            example7();
+            //funTask();
     }
 }

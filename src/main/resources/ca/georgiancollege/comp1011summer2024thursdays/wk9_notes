@@ -13,3 +13,14 @@ Two types of Stream
 
     Reference
         ANYDATATYPEStream
+
+
+Threads have thread states
+    Birth/born/new
+    Running/runnable
+
+    blocked     waiting for input/outputting data
+    wait        waiting on another task/process
+    timed wait
+
+    dead
