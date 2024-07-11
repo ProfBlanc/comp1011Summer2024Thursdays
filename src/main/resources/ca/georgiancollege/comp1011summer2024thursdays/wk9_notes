@@ -1,0 +1,15 @@
+Functional programming
+    Generating Data         Streams
+    Processing Data with Lamda Expressions
+
+
+Streams are short-lived generated data
+
+Two types of Stream
+    Primitive
+        IntStream
+        LongSteam
+        DoubleStream
+
+    Reference
+        ANYDATATYPEStream

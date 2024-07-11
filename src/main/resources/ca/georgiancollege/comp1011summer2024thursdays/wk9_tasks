@@ -1,0 +1,36 @@
+Task 1
+
+Create a class named Student
+    name: String
+    age: int
+    grade: double
+
+Task 2
+Create a ArrayList of 10 names
+
+Task 3
+Create an int array that stores 100 random ages between 18 and 65
+Hint: using Random object. There exists a method to convert an IntStream to an array
+
+Task 4
+Create a double array that store 100 random grade values between 40 and 95
+Hint; use Random object
+
+Task 5
+Create a LinkedList that will store a collection of Student objects
+
+Task 6
+Using a loop, instantiate a new Student object
+    name: choose a random name in task2 arraylist
+    age: get a value of your int array in task 3
+    grade: get a value of your double array in task 4
+
+Task 7
+    Output all student names with letter a and at least 4 character
+
+Task 8
+    Output all Mature Students (age 30+)
+Task 9
+    Output all HonorRoll students (grade: 80+)
+Task 10
+    Output all Teenage students that are failing
