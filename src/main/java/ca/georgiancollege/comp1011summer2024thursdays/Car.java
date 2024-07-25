@@ -1,4 +1,4 @@
-package ca.georgiancollege.copr.comp1011;
+package ca.georgiancollege.comp1011summer2024thursdays;
 
 import com.google.gson.annotations.Expose;
 
