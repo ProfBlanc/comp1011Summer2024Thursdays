@@ -11,9 +11,9 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader =
-                new FXMLLoader(HelloApplication.class.getResource("camera-view.fxml"));
+                new FXMLLoader(HelloApplication.class.getResource("dog-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Camera Time!");
+        stage.setTitle("Dog Time!");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

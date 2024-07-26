@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="502.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024thursdays.DogController">
+   <children>
+      <Label layoutX="88.0" layoutY="60.0" text="Status" />
+      <TextField fx:id="status" layoutX="236.0" layoutY="56.0" />
+      <Label layoutX="88.0" layoutY="185.0" text="Photo" />
+      <ImageView fx:id="message" fitHeight="245.0" fitWidth="396.0" layoutX="166.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="go" layoutX="386.0" layoutY="144.0" mnemonicParsing="false" text="Seconds. GO!" />
+      <Label layoutX="46.0" layoutY="148.0" text="Get New Image Every " />
+      <Slider fx:id="seconds" blockIncrement="1.0" layoutX="189.0" layoutY="150.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="5" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Button fx:id="stop" layoutX="410.0" layoutY="181.0" mnemonicParsing="false" style="-fx-background-color: red;" text="STOP" textFill="WHITE" />
+      <Label layoutX="473.0" layoutY="69.0" text="Counter" />
+      <Label fx:id="counter" alignment="CENTER" layoutX="481.0" layoutY="99.0" prefHeight="38.0" prefWidth="43.0" text="0" />
+   </children>
+</AnchorPane>

@@ -19,4 +19,12 @@ public class Dog {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "message='" + message + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

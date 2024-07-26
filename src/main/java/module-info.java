@@ -4,6 +4,7 @@ module ca.georgiancollege.comp1011summer2024thursdays {
     requires java.sql;
     requires java.net.http;
     requires com.google.gson;
+    requires java.desktop;
 
 
     opens ca.georgiancollege.comp1011summer2024thursdays to javafx.fxml, com.google.gson;
