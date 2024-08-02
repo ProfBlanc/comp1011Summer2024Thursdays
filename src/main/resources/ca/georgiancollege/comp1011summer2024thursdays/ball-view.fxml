@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.georgiancollege.comp1011summer2024thursdays.BallController">
+   <children>
+      <Label layoutX="58.0" layoutY="67.0" text="Search">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSearch" layoutX="125.0" layoutY="63.0" promptText="Conference or Division" />
+      <Button fx:id="btnSubmit" layoutX="314.0" layoutY="63.0" mnemonicParsing="false" onAction="#onSubmit" style="-fx-background-color: blue;" text="Submit" textFill="WHITE" />
+      <ComboBox fx:id="cbSelect" layoutX="124.0" layoutY="120.0" onAction="#onChange" prefHeight="26.0" prefWidth="263.0" />
+      <Label layoutX="60.0" layoutY="124.0" text="Select">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="173.0" text="Display">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDisplay" alignment="TOP_LEFT" layoutX="129.0" layoutY="173.0" prefHeight="159.0" prefWidth="254.0" style="-fx-border-width: 2px; -fx-border-color: black;" text="Select">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label layoutX="23.0" layoutY="348.0" text="Time Spent on Page">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" alignment="CENTER" layoutX="149.0" layoutY="340.0" prefHeight="42.0" prefWidth="82.0" text="1.1" />
+      <Button fx:id="btnPause" layoutX="249.0" layoutY="349.0" mnemonicParsing="false" onAction="#onPause" style="-fx-background-color: orange;" text="Pause" textFill="WHITE" />
+      <Button fx:id="btnRestart" layoutX="323.0" layoutY="349.0" mnemonicParsing="false" onAction="#onRestart" style="-fx-background-color: green;" text="Restart" textFill="WHITE" />
+      <Label layoutX="191.0" layoutY="14.0" text="Search NBA Teams">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="loading" layoutX="126.0" layoutY="95.0" prefWidth="200.0" progress="0.5" />
+   </children>
+</AnchorPane>
