@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader =
                 new FXMLLoader(HelloApplication.class.getResource("ball-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Dog Time!");
+        stage.setTitle("Ball Time!");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
