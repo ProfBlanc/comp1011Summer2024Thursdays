@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.sql.Time;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.concurrent.*;
@@ -32,8 +33,10 @@ public class BallController {
     private BallDontLieFetchTeams result;
 
     private BallDontLieAPI api = new BallDontLieAPI();
-    private ScheduledExecutorService scheduler;
+    private ScheduledExecutorService scheduler, keyboardWait;
 
+    private int searchTextLength;
+    private String pastSerchText = "";
 
     private int API_COUNT = 0;
     @FXML
@@ -83,6 +86,22 @@ public class BallController {
         catch (Exception e){
             System.err.println(e);
         }
+    };
+    private Runnable taskKeyboardTimeout = () -> {
+
+        if(searchTextLength > 0 && txtSearch.getText().length() == searchTextLength
+                &&
+                !txtSearch.getText().equalsIgnoreCase(pastSerchText)){
+            System.out.println("fetch task called");
+            pastSerchText = txtSearch.getText();
+            runAPICall();
+
+        }
+        else{
+            System.out.println("Updating search text");
+            searchTextLength = txtSearch.getText().length();
+        }
+
     };
     void getAndSetTimeValue() throws Exception{
 
@@ -171,11 +190,23 @@ public class BallController {
         lblTime.setText("0");
         btnRestart.setDisable(true);
         runTimer();
+
+        txtSearch.focusedProperty().addListener((observableValue, oldValue, newVal) ->{
+            System.out.println("Go Time!");
+            if(newVal){
+                System.out.println("yes");
+                keyboardWait = Executors.newSingleThreadScheduledExecutor();
+                keyboardWait.scheduleAtFixedRate(taskKeyboardTimeout, 0, 2500, TimeUnit.MILLISECONDS);
+            }
+            else{
+                System.out.println("no");
+                keyboardWait.shutdownNow();
+            }
+        });
+
     }
 
-    @FXML
-    void onSubmit(ActionEvent event) {
-
+    void runAPICall(){
         txtSearch.setDisable(true);
         loading.setVisible(true);
         loading.setProgress(0);
@@ -186,6 +217,12 @@ public class BallController {
         //taskUpdateProgressBar.run();
         new Thread(taskFetchData).start();
 
+    }
+
+    @FXML
+    void onSubmit(ActionEvent event) {
+
+        runAPICall();
 
     }
 }
